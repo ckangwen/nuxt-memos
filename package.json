@@ -1,0 +1,47 @@
+{
+  "name": "nuxt-memos",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "format": "prettier --write .",
+    "generate": "nuxt generate",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint --ext .ts,.tsx,.vue --cache --fix .",
+    "preview": "nuxt preview"
+  },
+  "dependencies": {
+    "@nuxtjs/supabase": "^0.3.1",
+    "@supabase/supabase-js": "^2.8.0",
+    "@trpc/client": "^10.12.0",
+    "@trpc/server": "^10.12.0",
+    "@vueuse/core": "^9.13.0",
+    "@vueuse/integrations": "^9.13.0",
+    "element-plus": "^2.2.32",
+    "h3": "^1.5.0",
+    "idb-keyval": "^6.2.0",
+    "nuxt": "^3.2.2",
+    "superjson": "^1.12.2",
+    "trpc-nuxt": "^0.6.0",
+    "zod": "^3.20.6"
+  },
+  "devDependencies": {
+    "@charrue/eslint-config-typescript": "^0.3.0",
+    "@charrue/eslint-config-vue3": "^0.2.0",
+    "@element-plus/nuxt": "^1.0.3",
+    "@types/node": "^18.14.1",
+    "@unocss/nuxt": "^0.50.1",
+    "dayjs": "^1.11.7",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.4",
+    "sass": "^1.58.3",
+    "typescript": "^4.9.5"
+  }
+}
