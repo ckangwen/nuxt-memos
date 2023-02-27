@@ -1,10 +1,14 @@
+import type { RouteMiddleware } from "nuxt/app";
+
+type RouteLocationNormalized = Parameters<RouteMiddleware>[0];
 /* eslint-disable consistent-return */
 const handleAuth = (to: RouteLocationNormalized) => {
   if (to.path === "/auth") {
     return;
   }
-  console.log("currentUser.value?.token", currentUser.value?.token, to.path);
-  if (!currentUser.value?.token) {
+  const user = useSupabaseUser();
+  console.log("user.value", user.value);
+  if (!user.value) {
     return navigateTo("/auth");
   }
 };

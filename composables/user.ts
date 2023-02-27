@@ -1,7 +1,7 @@
-export interface UserLogin {
-  token?: string;
+interface User {
+  email: string;
 }
-const STORAGE_KEY_USERS = "elk-users";
+const STORAGE_KEY_USERS = "memo-users";
 
 const initializeUser = () => {
   if (globalThis?.localStorage) {
@@ -12,17 +12,39 @@ const initializeUser = () => {
     }
   }
 
-  return {};
+  return null;
 };
 
-export const currentUser = ref<UserLogin>(initializeUser());
+const doFetch = () => {
+  console.log("fetchUserInfo");
+};
+export const useUser = () => {
+  const currentUser = ref<User | null>(initializeUser());
+  const sessionUser = useSupabaseUser();
+  watch(sessionUser, (user) => {
+    if (user === null) {
+      currentUser.value = null;
+    } else {
+      currentUser.value = {
+        email: user.email!,
+      };
+    }
+  });
 
-export const fetchUserInfo = (force?: boolean) => {
-  const doFetch = () => {
-    console.log("fetchUserInfo");
+  const updateUserInfo = async (user: Partial<User>) => {
+    currentUser.value = { ...currentUser.value!, ...user };
   };
 
-  if (force || !currentUser.value?.token) {
-    doFetch();
-  }
+  const fetchUserInfo = (force?: boolean) => {
+    if (force || !currentUser.value?.email) {
+      doFetch();
+    }
+  };
+
+  return {
+    currentUser,
+
+    updateUserInfo,
+    fetchUserInfo,
+  };
 };

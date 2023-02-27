@@ -1,7 +1,6 @@
 import {
   defineConfig,
   presetAttributify,
-  presetIcons,
   presetTypography,
   presetUno,
   transformerDirectives,
@@ -77,13 +76,6 @@ export default defineConfig({
       attributifyPseudo: true,
     }),
     presetAttributify(),
-    presetIcons({
-      scale: 1,
-      extraProperties: {
-        color: "inherit",
-        "min-width": "1em",
-      },
-    }),
     presetTypography(),
   ],
   transformers: [
